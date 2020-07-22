@@ -14,9 +14,9 @@ const Home = () => {
 
 const HomeScreen = () => {
   return (
-    <div>
-      home
-    </div>
+    <main className="home">
+      <section>home content</section>
+    </main>
   )
 }
 

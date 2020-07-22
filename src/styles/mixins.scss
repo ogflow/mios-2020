@@ -1,0 +1,5 @@
+@mixin transition ($type: 'ease') {
+  @if ($type == 'ease') {
+    transition: all 0.2s ease;
+  }
+}

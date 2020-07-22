@@ -1,0 +1,87 @@
+@import "variables.scss";
+
+@mixin text-body () {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 28px;
+  letter-spacing: 0.18px;
+  text-transform: none;
+  text-decoration: none;
+}
+
+@mixin text-caption () {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 28px;
+  letter-spacing: 0.14px;
+}
+
+@mixin text-label () {
+  font-family: 'Work Sans', sans-serif;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 24px;
+  letter-spacing: 0.5px;
+}
+
+@mixin text-subheading () {
+  font-family: 'Work Sans', sans-serif;
+  font-weight: 600;
+  font-size: 18px;
+  line-height: 24px;
+  letter-spacing: 0.5px;
+}
+
+@mixin text-h2 () {
+  font-family: 'Work Sans', sans-serif;
+  font-weight: 500;
+  font-size: 28px;
+  line-height: 36px;
+  letter-spacing: 0.25px;
+}
+
+@mixin text-h1 () {
+  font-family: 'Work Sans', sans-serif;
+  font-weight: 600;
+  font-size: 36px;
+  line-height: 60px;
+  letter-spacing: 0.5px;
+}
+
+@mixin text-xl () {
+  font-family: 'Work Sans', sans-serif;
+  font-weight: 600;
+  font-size: 70px;
+  line-height: 100px;
+  letter-spacing: 1px;
+}
+
+.text-caption {
+  @include text-caption;
+}
+
+.text-label {
+  @include text-label;
+}
+
+.text-subheading {
+  @include text-subheading;
+}
+
+.text-h2 {
+  @include text-h2;
+}
+
+.text-h1 {
+  @include text-h1;
+}
+
+.text-xl {
+  @include text-xl;
+}
+
+.text-uppercase {
+  text-transform: uppercase;
+}

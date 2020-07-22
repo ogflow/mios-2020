@@ -1,23 +1,23 @@
 import React from 'react'
-import './Work.scss'
+import './Projects.scss'
 import { Footer, Header } from '../../common'
 
-const Work = () => {
+const Projects = () => {
   return (
     <>
       <Header/>
-      <WorkScreen/>
+      <ProjectsScreen/>
       <Footer/>
     </>
   )
 }
 
-const WorkScreen = () => {
+const ProjectsScreen = () => {
   return (
     <div>
-      work details
+      Projects details
     </div>
   )
 }
 
-export default Work
+export default Projects
