@@ -17,7 +17,7 @@
       padding-bottom: 400px;
   
       &.company-slogan {
-        margin-top: 70vh;
+        margin-top: 100vh;
   
         .text-xl {
           max-width: 1080px;
@@ -88,15 +88,19 @@
       &.offices {
         .offices-list {
           margin-top: 50px;
-          width: calc(100% + 30px);
+          width: 100%;
           display: flex;
 
           .office {
             width: 50px;
             flex: 0 0 50%;
 
-            &:not(:last-child) {
-              margin-right: 30px;
+            &:nth-child(odd) {
+              padding-right: 15px;
+            }
+
+            &:nth-child(even) {
+              padding-left: 15px;
             }
 
             .map-image {
@@ -161,6 +165,50 @@
 
         &:hover {
           padding-left: 40px;
+        }
+      }
+    }
+
+    .social-media-links {
+      z-index: 10;
+      position: absolute;
+      top: 70vh;
+      right: 100px;
+      display: flex;
+      writing-mode: tb;
+
+      .link {
+        padding: 20px 0;
+
+        span {
+          z-index: 2;
+          text-transform: uppercase;
+          position: relative;
+          padding: 2px 8px;
+          color: $white;
+          @include transition;
+
+          &::before {
+            content: '';
+            z-index: -1;
+            position: absolute;
+            left: 0;
+            top: 0;
+            height: 100%;
+            width: 2px;
+            background: $white;
+            @include transition;
+          }
+        }
+
+        &:hover {
+          span {
+            color: $black;
+
+            &::before {
+              width: 100%;
+            }
+          }
         }
       }
     }

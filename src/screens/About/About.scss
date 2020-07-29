@@ -1,0 +1,99 @@
+@import "../../styles/variables.scss";
+@import "../../styles/mixins.scss";
+
+.about-us {
+  background: $black;
+  color: $white;
+
+  .page-cover {
+    display: flex;
+    flex-direction: column;
+
+    .image {
+      width: 100%;
+      height: 75vh;
+
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+    }
+
+    .motto {
+      padding: 70px 100px 150px 100px;
+      align-self: flex-end;
+
+      .text-xl {
+        text-align: right;
+        max-width: 1024px;
+      }
+    }
+  }
+
+  section {
+    margin: 0 auto;
+    max-width: 1024px;
+    padding: 0 80px 150px 80px;
+
+    .text-h1 {
+      margin-bottom: 30px;
+    }
+
+    .content {
+      padding-left: 120px;
+    }
+
+    &.team {
+      .content {
+        display: flex;
+        flex-wrap: wrap;
+
+        .member {
+          flex: 0 0 50%;
+          padding-bottom: 100px;
+          display: flex;
+          flex-direction: column;
+
+          &:nth-child(odd) {
+            padding-right: 25px;
+          }
+
+          &:nth-child(even) {
+            padding-left: 25px;
+          }
+
+          .image {
+            margin-bottom: 50px;
+            padding-top: 66.67%;
+            position: relative;
+
+            .photo {
+              position: absolute;
+              top: 0;
+              left: 0;
+              width: 100%;
+              height: 100%;
+              object-fit: cover;
+            }
+            
+            .mask {
+              z-index: 2;
+              position: absolute;
+              top: 0;
+              left: 50%;
+              height: 100%;
+              transform: translateX(-50%);
+            }
+          }
+
+          .job-position {
+            margin-top: 10px;
+            color: $green;
+          }
+        }
+      }
+    }
+
+  }
+}

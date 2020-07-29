@@ -1,3 +1,5 @@
 export const GET_ASSETS = 'GET_ASSETS'
-export const GET_OFFICES = 'GET_OFFICES'
 export const GET_HOME_PAGE = 'GET_HOME_PAGE'
+export const GET_OFFICES = 'GET_OFFICES'
+export const GET_ABOUT_US_PAGE = 'GET_ABOUT_US_PAGE'
+export const GET_TEAM_MEMBERS = 'GET_TEAM_MEMBERS'

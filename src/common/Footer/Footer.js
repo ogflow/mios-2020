@@ -54,7 +54,7 @@ class Footer extends React.Component {
     window.scroll({
       top: 0,
       behavior: 'smooth'
-    });
+    })
   }
 }
 
@@ -75,6 +75,6 @@ const socialMediaItems = [
     name: "Behance",
     href: "https://behance.com"
   }
-];
+]
 
 export default Footer

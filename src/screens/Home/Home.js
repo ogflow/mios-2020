@@ -105,6 +105,16 @@ const HomeScreen = ({ data, assets, offices }) => {
       <main className="home">
         <div className="content">
 
+          <div className="social-media-links">{
+            socialMediaItems.map((item) =>
+              <a className="link" href={item.href} key={item.href}>
+                <span className="text-subheading">
+                  {item.name}
+                </span>
+              </a>
+            )
+          }</div>
+
           <section className="company-slogan">
             <p className="text-xl">{
               companySlogan.content[0].content.map((t, i) => {
@@ -189,6 +199,25 @@ const HomeScreen = ({ data, assets, offices }) => {
     </>
   )
 }
+
+const socialMediaItems = [
+  {
+    name: "Instagram",
+    href: "https://instagram.com"
+  },
+  {
+    name: "Facebook",
+    href: "https://facebook.com"
+  },
+  {
+    name: "LinkedIn",
+    href: "https://linkedin.com"
+  },
+  {
+    name: "Behance",
+    href: "https://behance.com"
+  }
+]
 
 const mapStateToProps = (state) => ({
   assets: state.assets,

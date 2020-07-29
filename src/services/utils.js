@@ -1,3 +1,5 @@
+import React from 'react'
+
 export function findAsset (assets, target) {
   if (!assets || !assets.length) return
 
@@ -16,7 +18,23 @@ export function returnPromise (callback) {
   })
 }
 
+export function renderPlainTextParagraphs (data) {
+  return data.content.map((p, i) => {
+    let text
+    p.content.map((el, i) => {
+      if (el.nodeType === 'text') {
+        text += el.value
+      }
+    })
+
+    return (
+      <p key={i}>{text}</p>
+    )
+  })
+}
+
 export default {
   findAsset,
   returnPromise,
+  renderPlainTextParagraphs,
 }
