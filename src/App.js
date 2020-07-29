@@ -1,10 +1,30 @@
 import React from 'react'
-import AppRouter from './AppRouter'
+import { connect } from 'react-redux'
 
-function App() {
-  return (
-    <AppRouter/>
-  )
+import AppRouter from './AppRouter'
+import { getAssets } from './actions'
+
+export class App extends React.Component {
+  constructor (props) {
+    super(props)
+    this.state = {
+      isInitiated: true,
+    }
+  }
+
+  render() {
+    const { isInitiated } = this.state
+    
+    return isInitiated ? (
+      <AppRouter />
+    ) : (
+      <p>loading...</p>
+    )
+  }
+
+  componentDidMount () {
+    this.props.getAssets()
+  }
 }
 
-export default App
+export default connect(null, { getAssets })(App)

@@ -1,7 +1,202 @@
 @import "../../styles/variables.scss";
+@import "../../styles/mixins.scss";
 
 .home {
-  padding-top: 134px;
   background: $black;
   color: $white;
+
+  .content {
+    z-index: 5;
+    position: relative;
+    padding: 134px 100px 0 100px;
+
+    section {
+      max-width: 1400px;
+      width: 100%;
+      margin: 0 auto;
+      padding-bottom: 400px;
+  
+      &.company-slogan {
+        margin-top: 70vh;
+  
+        .text-xl {
+          max-width: 1080px;
+
+          span {
+            &.is-accented {
+              color: $green;
+            }
+          }
+        }
+      }
+
+      &.services {
+        .text-h1 {
+          text-align: center;
+        }
+
+        .services-list {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+
+          li {
+            margin-top: 300px;
+            transition: .8s .01s cubic-bezier(.17,1.2,.89,.94);
+
+            &:nth-child(odd) {
+              transform: translateX(-100vw) skewX(50deg) scale3d(2, 1.5, 2);
+            }
+
+            &:nth-child(even) {
+              transform: translateX(100vw) skewX(-50deg) scale3d(2, 1.5, 2);
+            }
+
+            &.is-centered {
+              transform: translatex(0vw) skewX(0deg) scale3d(1, 1, 1);
+            }
+          }
+        }
+
+        .button {
+          margin: 300px auto 0 auto;
+        }
+      }
+
+      &.partners {
+        .text-h1 {
+          text-align: center;
+        }
+
+        .partners-logotypes {
+          margin-top: 50px;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+
+          img {
+            height: 40px;
+            max-width: 160px;
+
+            &:not(:last-child) {
+              margin-right: 100px;
+            }
+          }
+        }
+      }
+
+      &.offices {
+        .offices-list {
+          margin-top: 50px;
+          width: calc(100% + 30px);
+          display: flex;
+
+          .office {
+            width: 50px;
+            flex: 0 0 50%;
+
+            &:not(:last-child) {
+              margin-right: 30px;
+            }
+
+            .map-image {
+              display: block;
+              width: 100%;
+              padding-top: 66.66%;
+              position: relative;
+              overflow: hidden;
+              background: $white;
+
+              img {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                @include transition;
+              }
+
+              &:hover {
+                img {
+                  transform: scale(1.1);
+                  opacity: 0.85;
+                }
+              }
+            }
+
+            .text-h2 {
+              margin-top: 30px;
+            }
+
+            .divider {
+              margin: 20px 0;
+              width: 80px;
+              height: 5px;
+              background: $green;
+            }
+          }
+        }
+      }
+    }
+    
+    .get-in-touch {
+      z-index: 10;
+      position: sticky;
+      top: 50%;
+      left: 0;
+      margin-left: -100px;
+
+      .link {
+        position: absolute;
+        display: block;
+        padding: 40px 15px;
+        transform: translateY(-50%);
+        white-space: nowrap;
+        text-transform: uppercase;
+        writing-mode: tb;
+        background: $green;
+        color: $black;
+        @include transition;
+
+        &:hover {
+          padding-left: 40px;
+        }
+      }
+    }
+  }
+  
+  .logotype-metamorphose {
+    z-index: 1;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    width: 100%;
+    height: 100%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    pointer-events: none;
+    opacity: 0.2;
+    @include transition
+  
+    svg {
+      width: 340px;
+      height: 454px;
+      transition: .5s cubic-bezier(.38,1.22,.95,.9);
+
+      & * {
+        fill: white;
+      }
+    }
+
+    &:not(.is-out) {
+      opacity: 1;
+
+      svg {
+        transform: scale(1.2);
+      }
+    }
+  }
 }

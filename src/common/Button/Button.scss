@@ -1,0 +1,27 @@
+@import '../../styles/variables.scss';
+@import '../../styles/mixins.scss';
+
+.button {
+  display: flex;
+  width: 250px;
+  height: 50px;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  border: 1px solid $green;
+  @include transition;
+
+  span {
+    color: $green;
+    @include transition;
+  }
+
+  &:hover {
+    cursor: pointer;
+    background: $green;
+
+    span {
+      color: $black;
+    }
+  }
+}

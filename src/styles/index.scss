@@ -4,6 +4,7 @@
 
 body {
   @include text-body;
+  overflow-x: hidden;
 }
 
 a {
