@@ -21,7 +21,7 @@ export function returnPromise (callback) {
 export function renderPlainTextParagraphs (data) {
   return data.content.map((p, i) => {
     let text
-    p.content.map((el, i) => {
+    p.content.forEach((el, i) => {
       if (el.nodeType === 'text') {
         text += el.value
       }

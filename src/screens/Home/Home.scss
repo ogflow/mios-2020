@@ -227,7 +227,7 @@
     align-items: center;
     pointer-events: none;
     opacity: 0.2;
-    @include transition
+    @include transition;
   
     svg {
       width: 340px;
