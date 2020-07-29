@@ -47,6 +47,7 @@ class Home extends React.Component {
 }
 
 const HomeScreen = ({ data, assets, offices }) => {
+  const origin = process.env.PUBLIC_URL
   const {
     companySlogan,
     servicesTitle,
@@ -145,7 +146,7 @@ const HomeScreen = ({ data, assets, offices }) => {
           </section>
 
           <div className="get-in-touch">
-            <Link to="/contact" className="link text-label">Get in touch</Link>
+            <Link to={origin + "/contact"} className="link text-label">Get in touch</Link>
           </div>
 
           <section className="partners">

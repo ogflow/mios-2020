@@ -14,11 +14,12 @@ class Footer extends React.Component {
         </a>
       </li>
     )
+    const origin = process.env.PUBLIC_URL
 
     return (
       <footer className="footer">
         <div className="logotype">
-          <Link to="/"><MiosLogotype/></Link>
+          <Link to={origin}><MiosLogotype/></Link>
         </div>
         <div className="contacts">
           <h3 className="text-subheading">Mios Agency</h3>
@@ -31,10 +32,10 @@ class Footer extends React.Component {
         </div>
         <nav className="menu">
           <ul className="menu-links text-h2">
-            <li><Link to="/services">Services</Link></li>
-            <li><Link to="/projects">Projects</Link></li>
-            <li><Link to="/contact">Contact</Link></li>
-            <li><Link to="/about">About</Link></li>
+            <li><Link to={origin + "/services"}>Services</Link></li>
+            <li><Link to={origin + "/projects"}>Projects</Link></li>
+            <li><Link to={origin + "/contact"}>Contact</Link></li>
+            <li><Link to={origin + "/about"}>About</Link></li>
           </ul>
         </nav>
         <div className="aside-block">
