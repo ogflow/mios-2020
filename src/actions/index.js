@@ -1,5 +1,5 @@
 import { 
-  GET_ASSETS, GET_HOME_PAGE, GET_OFFICES, GET_ABOUT_US_PAGE, GET_TEAM_MEMBERS
+  GET_ASSETS, GET_HOME_PAGE, GET_OFFICES, GET_ABOUT_US_PAGE, GET_TEAM_MEMBERS, GET_CONTACT_PAGE
 } from './actionTypes'
 import { apiService, utils } from '../services'
 
@@ -101,6 +101,27 @@ export function getTeamMembers() {
       .then(res => {
         dispatch({
           type: GET_TEAM_MEMBERS,
+          payload: res
+        })
+      })
+    )
+  }
+}
+
+export function getContactPage() {
+  return function (dispatch, getState) {
+    const cachedData = getState().contact
+
+    return !!cachedData ? (
+      utils.returnPromise(dispatch({
+        type: GET_CONTACT_PAGE,
+        payload: cachedData
+      }))
+    ) : (
+      apiService.getContactPage()
+      .then(res => {
+        dispatch({
+          type: GET_CONTACT_PAGE,
           payload: res
         })
       })

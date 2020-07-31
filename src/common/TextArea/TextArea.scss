@@ -1,0 +1,27 @@
+@import "../../styles/variables.scss";
+@import "../../styles/mixins.scss";
+
+.text-area {
+  textarea {
+    width: 100%;
+    padding: 20px;
+    overflow: auto;
+    resize: none;
+    color: $white;
+    border: 1px solid $white;
+    background: transparent;
+    outline: none;
+    @include transition;
+  }
+
+  .placeholder {
+    top: 49px !important;
+    left: 20px !important;
+  }
+
+  &.is-focused {
+    textarea {
+      border-color: $green;
+    }
+  }
+}

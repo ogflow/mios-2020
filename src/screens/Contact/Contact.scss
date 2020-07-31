@@ -1,0 +1,65 @@
+@import "../../styles/variables.scss";
+
+.contact {
+  background: $black;
+  color: $white;
+  padding-top: 200px;
+
+  section {
+    margin: 0 auto;
+    max-width: 1024px;
+    padding: 0 80px 150px 80px;
+
+    .text-h1 {
+      margin-bottom: 40px;
+    }
+
+    .content {
+      padding-left: 120px;
+    }
+
+    &.want-to-talk {
+      .content {
+        display: flex;
+
+        & > div {
+          width: 50%;
+          flex-basis: 50%;
+
+          .text-subheading {
+            margin-bottom: 20px;
+          }
+
+          .link {
+            color: $green;
+          }
+        }
+      }
+    }
+
+    &.get-in-touch {
+      form {
+        .inline-fields {
+          display: flex;
+
+          & > div {
+            width: calc(50% - 15px);
+
+            &:nth-child(odd) {
+              margin-right: 15px;
+            }
+
+            &:nth-child(even) {
+              margin-left: 15px;
+            }
+          }
+        }
+
+        .text-area {
+          margin-bottom: 40px;
+        }
+      }
+    }
+
+  }
+}

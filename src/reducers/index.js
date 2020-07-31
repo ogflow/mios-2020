@@ -1,5 +1,5 @@
 import { 
-  GET_ASSETS, GET_HOME_PAGE, GET_OFFICES, GET_ABOUT_US_PAGE, GET_TEAM_MEMBERS
+  GET_ASSETS, GET_HOME_PAGE, GET_OFFICES, GET_ABOUT_US_PAGE, GET_TEAM_MEMBERS, GET_CONTACT_PAGE
 } from '../actions/actionTypes'
 
 const initialState = {
@@ -39,6 +39,11 @@ const rootReducer = (state = initialState, action) => {
     case GET_TEAM_MEMBERS:
       return Object.assign({}, state, {
         teamMembers: action.payload
+      })
+
+    case GET_CONTACT_PAGE:
+      return Object.assign({}, state, {
+        contact: action.payload
       })
 
     default:

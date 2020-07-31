@@ -5,6 +5,7 @@ const SPACE_ID = process.env.REACT_APP_CONTENTFUL_SPACE_ID
 const ENVIRONMENT_ID = 'master'
 const HOME_PAGE_ID = '6MuhwTeJiNrUvzedcC0SQY'
 const ABOUT_US_PAGE_ID = '1f9tcPCs97tuqaz24wC0x7'
+const CONTACT_PAGE_ID = '4aq9l0ubiQYzLPKFHnbtgP'
 
 axios.defaults.baseURL = 'https://cdn.contentful.com'
 axios.defaults.headers.common['Authorization'] = `Bearer ${AUTH_TOKEN}`
@@ -34,12 +35,18 @@ const getTeamMembers = () => {
   .then(res => res.data.items)
 }
 
+const getContactPage = () => {
+  return axios.get(`/spaces/${SPACE_ID}/environments/${ENVIRONMENT_ID}/entries/${CONTACT_PAGE_ID}`)
+  .then(res => res.data.fields)
+}
+
 const apiService = {
   getAssets,
   getHomePage,
   getOffices,
   getAbousUsPage,
   getTeamMembers,
+  getContactPage,
 }
 
 export default apiService

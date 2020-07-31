@@ -2,4 +2,8 @@
   @if ($type == 'ease') {
     transition: all 0.2s ease;
   }
+
+  @if ($type == 'fast') {
+    transition: all 0.12s cubic-bezier(.3,1.16,.84,.92);
+  }
 }

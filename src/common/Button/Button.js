@@ -1,10 +1,14 @@
 import React from 'react'
 import './Button.scss'
 
-const Button = ({ children }) => (
-  <button className="button">
-    <span>{children}</span>
-  </button>
-)
+const Button = props => {
+  const { children } = props
+
+  return (
+    <button className="button" {...props}>
+      <span>{children}</span>
+    </button>
+  )
+}
 
 export default Button

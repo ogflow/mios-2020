@@ -5,9 +5,9 @@ import { Link } from 'react-router-dom'
 import './Home.scss'
 import { ReactComponent as MiosLogotype } from '../../assets/icons/mios.svg'
 
-import { Button, Footer, Header } from '../../common'
+import { Button, Footer, Header, Offices } from '../../common'
 import { utils } from '../../services'
-import { getHomePage, getOffices } from '../../actions'
+import { getHomePage } from '../../actions'
 
 
 class Home extends React.Component {
@@ -20,12 +20,12 @@ class Home extends React.Component {
 
   render () {
     const { isLoaded } = this.state
-    const { assets, home, offices } = this.props
+    const { assets, home } = this.props
     
     return isLoaded ? (
       <>
         <Header/>
-        <HomeScreen data={home} assets={assets} offices={offices} />
+        <HomeScreen data={home} assets={assets} />
         <Footer/>
       </>
     ) : (
@@ -34,13 +34,11 @@ class Home extends React.Component {
   }
 
   componentDidMount () {
-    const { getHomePage, getOffices } = this.props
+    const { getHomePage } = this.props
 
     getHomePage().then(() => {
-      getOffices().then(() => {
-        this.setState({
-          isLoaded: true
-        })
+      this.setState({
+        isLoaded: true
       })
     })
   }
@@ -164,30 +162,7 @@ const HomeScreen = ({ data, assets, offices }) => {
 
           <section className="offices">
             <p className="text-h1">{officesTitle}</p>
-            <div className="offices-list">{
-              officesItems.map((item) => {
-                const office = utils.findAsset(offices, item)
-                if (!office) return null
-
-                const mapImage = utils.findAsset(assets, office.fields.mapImage)
-                const { title, mapLinkUrl, fullAddress } = office.fields
-
-                return office && mapImage && (
-                  <div className="office" key={office.sys.id}>
-                    <a className="map-image" href={ mapLinkUrl } target="_blank" rel="noopener noreferrer">
-                      <img src={mapImage.fields.file.url} alt={mapImage.fields.title} />
-                    </a>
-                    <p className="text-h2">{ title }</p>
-                    <div className="divider"></div>
-                    { fullAddress.content.map(p => (
-                      <p key={p.content[0].value}>
-                        {p.content[0].value}
-                      </p>
-                    )) }
-                  </div>
-                )
-              })
-            }</div>
+            <Offices officesRefs={officesItems} assets={assets} />
           </section>
 
         </div>
@@ -223,7 +198,6 @@ const socialMediaItems = [
 const mapStateToProps = (state) => ({
   assets: state.assets,
   home: state.home,
-  offices: state.offices,
 })
 
-export default connect(mapStateToProps, { getHomePage, getOffices })(Home)
+export default connect(mapStateToProps, { getHomePage })(Home)

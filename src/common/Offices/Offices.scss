@@ -1,0 +1,58 @@
+@import "../../styles/mixins.scss";
+@import "../../styles/variables.scss";
+
+.offices-list {
+  margin-top: 50px;
+  width: 100%;
+  display: flex;
+
+  .office {
+    width: 50px;
+    flex: 0 0 50%;
+
+    &:nth-child(odd) {
+      padding-right: 15px;
+    }
+
+    &:nth-child(even) {
+      padding-left: 15px;
+    }
+
+    .map-image {
+      display: block;
+      width: 100%;
+      padding-top: 66.66%;
+      position: relative;
+      overflow: hidden;
+      background: $white;
+
+      img {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        @include transition;
+      }
+
+      &:hover {
+        img {
+          transform: scale(1.1);
+          opacity: 0.85;
+        }
+      }
+    }
+
+    .text-h2 {
+      margin-top: 30px;
+    }
+
+    .divider {
+      margin: 20px 0;
+      width: 80px;
+      height: 5px;
+      background: $green;
+    }
+  }
+}
