@@ -1,27 +1,27 @@
 {
   "files": {
-    "main.css": "/mios-2020/static/css/main.708076b4.chunk.css",
-    "main.js": "/mios-2020/static/js/main.5dc62dcd.chunk.js",
-    "main.js.map": "/mios-2020/static/js/main.5dc62dcd.chunk.js.map",
+    "main.css": "/mios-2020/static/css/main.8e6727f1.chunk.css",
+    "main.js": "/mios-2020/static/js/main.ee2f2cd2.chunk.js",
+    "main.js.map": "/mios-2020/static/js/main.ee2f2cd2.chunk.js.map",
     "runtime-main.js": "/mios-2020/static/js/runtime-main.b39a4d71.js",
     "runtime-main.js.map": "/mios-2020/static/js/runtime-main.b39a4d71.js.map",
     "static/css/2.71eaf00e.chunk.css": "/mios-2020/static/css/2.71eaf00e.chunk.css",
-    "static/js/2.6e6cfece.chunk.js": "/mios-2020/static/js/2.6e6cfece.chunk.js",
-    "static/js/2.6e6cfece.chunk.js.map": "/mios-2020/static/js/2.6e6cfece.chunk.js.map",
+    "static/js/2.9e68b251.chunk.js": "/mios-2020/static/js/2.9e68b251.chunk.js",
+    "static/js/2.9e68b251.chunk.js.map": "/mios-2020/static/js/2.9e68b251.chunk.js.map",
     "index.html": "/mios-2020/index.html",
-    "precache-manifest.b25e7dc677f268bcb4b247077ca9c8e9.js": "/mios-2020/precache-manifest.b25e7dc677f268bcb4b247077ca9c8e9.js",
+    "precache-manifest.c583ba4f73c3fafa913500dc4e6da686.js": "/mios-2020/precache-manifest.c583ba4f73c3fafa913500dc4e6da686.js",
     "service-worker.js": "/mios-2020/service-worker.js",
     "static/css/2.71eaf00e.chunk.css.map": "/mios-2020/static/css/2.71eaf00e.chunk.css.map",
-    "static/css/main.708076b4.chunk.css.map": "/mios-2020/static/css/main.708076b4.chunk.css.map",
-    "static/js/2.6e6cfece.chunk.js.LICENSE.txt": "/mios-2020/static/js/2.6e6cfece.chunk.js.LICENSE.txt",
+    "static/css/main.8e6727f1.chunk.css.map": "/mios-2020/static/css/main.8e6727f1.chunk.css.map",
+    "static/js/2.9e68b251.chunk.js.LICENSE.txt": "/mios-2020/static/js/2.9e68b251.chunk.js.LICENSE.txt",
     "static/media/arrow_up_circle.bb761e83.svg": "/mios-2020/static/media/arrow_up_circle.bb761e83.svg",
     "static/media/mios.26ac17a0.svg": "/mios-2020/static/media/mios.26ac17a0.svg"
   },
   "entrypoints": [
     "static/js/runtime-main.b39a4d71.js",
     "static/css/2.71eaf00e.chunk.css",
-    "static/js/2.6e6cfece.chunk.js",
-    "static/css/main.708076b4.chunk.css",
-    "static/js/main.5dc62dcd.chunk.js"
+    "static/js/2.9e68b251.chunk.js",
+    "static/css/main.8e6727f1.chunk.css",
+    "static/js/main.ee2f2cd2.chunk.js"
   ]
 }
