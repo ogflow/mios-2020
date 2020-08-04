@@ -71,11 +71,11 @@ const ContactScreen = ({ data, assets }) => {
         <div className="content">
           <div>
             <p className="text-subheading">{sendEmailText}</p>
-            <a className="link" href={"mailto:" + {email}}>{email}</a>
+            <a className="link" href={`mailto:${email}`}>{email}</a>
           </div>
           <div>
             <p className="text-subheading">{callPhoneText}</p>
-            <a className="link" href={"tel:" + {phone}}>{phone}</a>
+            <a className="link" href={`tel:${phone}`}>{phone}</a>
           </div>
         </div>
       </section>
