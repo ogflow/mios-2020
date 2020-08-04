@@ -2,7 +2,6 @@ import React from 'react'
 import { connect } from 'react-redux'
 
 import './Contact.scss'
-import { utils } from '../../services'
 import { getContactPage } from '../../actions'
 import {
   Button, Dropdown, Footer, Header, Offices, TextField, TextArea
@@ -18,12 +17,12 @@ class Contact extends React.Component {
 
   render () {
     const { isLoaded } = this.state
-    const { assets, contact } = this.props
+    const { assets, contactPage } = this.props
 
     return isLoaded ? (
       <>
         <Header/>
-        <ContactScreen data={contact} assets={assets} />
+        <ContactScreen data={contactPage} assets={assets} />
         <Footer/>
       </>
     ) : (
@@ -113,7 +112,7 @@ const ContactScreen = ({ data, assets }) => {
 
 const mapStateToProps = (state) => ({
   assets: state.assets,
-  contact: state.contact,
+  contactPage: state.contactPage,
 })
 
 export default connect(mapStateToProps, { getContactPage })(Contact)

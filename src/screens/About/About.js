@@ -16,12 +16,12 @@ class About extends React.Component {
 
   render () {
     const { isLoaded } = this.state
-    const { assets, aboutUs, teamMembers } = this.props
+    const { assets, aboutUsPage, teamMembers } = this.props
     
     return isLoaded ? (
       <>
         <Header/>
-        <AboutScreen data={aboutUs} assets={assets} teamMembers={teamMembers} />
+        <AboutScreen data={aboutUsPage} assets={assets} teamMembers={teamMembers} />
         <Footer/>
       </>
     ) : (
@@ -103,8 +103,8 @@ const AboutScreen = ({ data, assets, teamMembers }) => {
 
 const mapStateToProps = (state) => ({
   assets: state.assets,
-  aboutUs: state.aboutUs,
   teamMembers: state.teamMembers,
+  aboutUsPage: state.aboutUsPage,
 })
 
 export default connect(mapStateToProps, { getAboutUsPage, getTeamMembers })(About)

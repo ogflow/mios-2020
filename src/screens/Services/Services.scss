@@ -1,0 +1,95 @@
+@import "../../styles/variables.scss";
+
+main.services {
+  background: $black;
+  color: $white;
+  padding-top: 200px;
+
+  section {
+    margin: 0 auto;
+    max-width: 1240px;
+    padding: 0 160px 150px 80px;
+
+    .text-h1 {
+      margin-bottom: 70px;
+    }
+
+    .content {
+      padding-left: 120px;
+    }
+
+    &.expertise, &.how-we-work {
+      .content {
+        display: flex;
+        flex-wrap: wrap;
+
+        .service-wrap {
+          width: 33.33%;
+
+          .service {
+            width: 200px;
+
+            .image {
+              margin-bottom: 50px;
+
+              img {
+                height: 60px;
+              }
+            }
+
+            .separator {
+              margin: 15px 0 50px 0;
+              width: 80px;
+              height: 5px;
+              background: $green;
+            }
+          }
+
+          &:nth-child(-n+3) {
+            padding-bottom: 100px;
+          }
+        }
+      }
+    }
+
+    &.partners {
+      .content {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        img {
+          height: 40px;
+          max-width: 160px;
+
+          &:not(:last-child) {
+            margin-right: 100px;
+          }
+        }
+      }
+    }
+
+    &.contact-us {
+      .content {
+        .text {
+          max-width: 480px;
+          padding-bottom: 30px;
+        }
+
+        .link {
+          color: $green;
+          display: flex;
+          height: 28px;
+
+          svg {
+            margin: 5px 0 0 8px;
+
+            & * {
+              fill: $green;
+            }
+          }
+        }
+      }
+    }
+  }
+}

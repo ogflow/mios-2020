@@ -1,16 +1,17 @@
 import { 
-  GET_ASSETS, GET_HOME_PAGE, GET_OFFICES, GET_ABOUT_US_PAGE, GET_TEAM_MEMBERS, GET_CONTACT_PAGE
+  GET_ASSETS, GET_OFFICES, GET_TEAM_MEMBERS, GET_SERVICES, GET_HOME_PAGE, GET_ABOUT_US_PAGE, GET_CONTACT_PAGE, GET_SERVICES_PAGE
 } from '../actions/actionTypes'
 
 const initialState = {
   assets: null,
   projects: null,
-  home: null,
   offices: null,
-  aboutUs: null,
-  teamMembers: null,
-  contact: null,
   services: null,
+  teamMembers: null,
+  homePage: null,
+  aboutUsPage: null,
+  contactPage: null,
+  servicesPage: null,
 }
 
 const rootReducer = (state = initialState, action) => {
@@ -21,19 +22,9 @@ const rootReducer = (state = initialState, action) => {
         assets: action.payload
       })
 
-    case GET_HOME_PAGE:
-      return Object.assign({}, state, {
-        home: action.payload
-      })
-
     case GET_OFFICES:
       return Object.assign({}, state, {
         offices: action.payload
-      })
-
-    case GET_ABOUT_US_PAGE:
-      return Object.assign({}, state, {
-        aboutUs: action.payload
       })
 
     case GET_TEAM_MEMBERS:
@@ -41,9 +32,30 @@ const rootReducer = (state = initialState, action) => {
         teamMembers: action.payload
       })
 
+    case GET_SERVICES:
+      return Object.assign({}, state, {
+        services: action.payload
+      })
+
+    case GET_HOME_PAGE:
+      return Object.assign({}, state, {
+        homePage: action.payload
+      })
+
+    case GET_ABOUT_US_PAGE:
+      return Object.assign({}, state, {
+        aboutUsPage: action.payload
+      })
+
+
     case GET_CONTACT_PAGE:
       return Object.assign({}, state, {
-        contact: action.payload
+        contactPage: action.payload
+      })
+
+    case GET_SERVICES_PAGE:
+      return Object.assign({}, state, {
+        servicesPage: action.payload
       })
 
     default:

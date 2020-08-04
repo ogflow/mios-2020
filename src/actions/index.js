@@ -1,5 +1,5 @@
 import { 
-  GET_ASSETS, GET_HOME_PAGE, GET_OFFICES, GET_ABOUT_US_PAGE, GET_TEAM_MEMBERS, GET_CONTACT_PAGE
+  GET_ASSETS, GET_OFFICES, GET_TEAM_MEMBERS, GET_SERVICES, GET_HOME_PAGE, GET_ABOUT_US_PAGE, GET_CONTACT_PAGE, GET_SERVICES_PAGE
 } from './actionTypes'
 import { apiService, utils } from '../services'
 
@@ -17,27 +17,6 @@ export function getAssets() {
       .then(res => {
         dispatch({
           type: GET_ASSETS,
-          payload: res
-        })
-      })
-    )
-  }
-}
-
-export function getHomePage() {
-  return function (dispatch, getState) {
-    const cachedData = getState().home
-
-    return !!cachedData ? (
-      utils.returnPromise(dispatch({
-        type: GET_HOME_PAGE,
-        payload: cachedData
-      }))
-    ) : (
-      apiService.getHomePage()
-      .then(res => {
-        dispatch({
-          type: GET_HOME_PAGE,
           payload: res
         })
       })
@@ -66,27 +45,6 @@ export function getOffices() {
   }
 }
 
-export function getAboutUsPage() {
-  return function (dispatch, getState) {
-    const cachedData = getState().aboutUs
-
-    return !!cachedData ? (
-      utils.returnPromise(dispatch({
-        type: GET_ABOUT_US_PAGE,
-        payload: cachedData
-      }))
-    ) : (
-      apiService.getAbousUsPage()
-      .then(res => {
-        dispatch({
-          type: GET_ABOUT_US_PAGE,
-          payload: res
-        })
-      })
-    )
-  }
-}
-
 export function getTeamMembers() {
   return function (dispatch, getState) {
     const cachedData = getState().teamMembers
@@ -108,6 +66,69 @@ export function getTeamMembers() {
   }
 }
 
+export function getServices() {
+  return function (dispatch, getState) {
+    const cachedData = getState().services
+
+    return !!cachedData ? (
+      utils.returnPromise(dispatch({
+        type: GET_SERVICES,
+        payload: cachedData
+      }))
+    ) : (
+      apiService.getServices()
+      .then(res => {
+        dispatch({
+          type: GET_SERVICES,
+          payload: res
+        })
+      })
+    )
+  }
+}
+
+export function getHomePage() {
+  return function (dispatch, getState) {
+    const cachedData = getState().home
+
+    return !!cachedData ? (
+      utils.returnPromise(dispatch({
+        type: GET_HOME_PAGE,
+        payload: cachedData
+      }))
+    ) : (
+      apiService.getHomePage()
+      .then(res => {
+        dispatch({
+          type: GET_HOME_PAGE,
+          payload: res
+        })
+      })
+    )
+  }
+}
+
+export function getAboutUsPage() {
+  return function (dispatch, getState) {
+    const cachedData = getState().aboutUs
+
+    return !!cachedData ? (
+      utils.returnPromise(dispatch({
+        type: GET_ABOUT_US_PAGE,
+        payload: cachedData
+      }))
+    ) : (
+      apiService.getAbousUsPage()
+      .then(res => {
+        dispatch({
+          type: GET_ABOUT_US_PAGE,
+          payload: res
+        })
+      })
+    )
+  }
+}
+
 export function getContactPage() {
   return function (dispatch, getState) {
     const cachedData = getState().contact
@@ -122,6 +143,27 @@ export function getContactPage() {
       .then(res => {
         dispatch({
           type: GET_CONTACT_PAGE,
+          payload: res
+        })
+      })
+    )
+  }
+}
+
+export function getServicesPage() {
+  return function (dispatch, getState) {
+    const cachedData = getState().servicesPage
+
+    return !!cachedData ? (
+      utils.returnPromise(dispatch({
+        type: GET_SERVICES_PAGE,
+        payload: cachedData
+      }))
+    ) : (
+      apiService.getServicesPage()
+      .then(res => {
+        dispatch({
+          type: GET_SERVICES_PAGE,
           payload: res
         })
       })

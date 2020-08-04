@@ -20,12 +20,12 @@ class Home extends React.Component {
 
   render () {
     const { isLoaded } = this.state
-    const { assets, home } = this.props
+    const { assets, homePage } = this.props
     
     return isLoaded ? (
       <>
         <Header/>
-        <HomeScreen data={home} assets={assets} />
+        <HomeScreen data={homePage} assets={assets} />
         <Footer/>
       </>
     ) : (
@@ -197,7 +197,7 @@ const socialMediaItems = [
 
 const mapStateToProps = (state) => ({
   assets: state.assets,
-  home: state.home,
+  homePage: state.homePage,
 })
 
 export default connect(mapStateToProps, { getHomePage })(Home)

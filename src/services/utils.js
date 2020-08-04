@@ -19,18 +19,22 @@ export function returnPromise (callback) {
 }
 
 export function renderPlainTextParagraphs (data) {
-  return data.content.map((p, i) => {
-    let text
-    p.content.forEach((el, i) => {
-      if (el.nodeType === 'text') {
-        text += el.value
-      }
-    })
-
-    return (
-      <p key={i}>{text}</p>
+  return !data
+    ? ( <p></p> )
+    : (
+      data.content.map((p, i) => {
+        let text = ''
+        p.content.forEach((el, i) => {
+          if (el.nodeType === 'text') {
+            text += el.value
+          }
+        })
+    
+        return (
+          <p className="text-p" key={i}>{text}</p>
+        )
+      })
     )
-  })
 }
 
 export default {
