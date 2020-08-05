@@ -4,10 +4,11 @@ import { Link } from 'react-router-dom'
 
 import './Home.scss'
 import { ReactComponent as MiosLogotype } from '../../assets/icons/mios.svg'
+import { ReactComponent as ArrowRight } from '../../assets/icons/arrow_right.svg'
 
 import { Button, Footer, Header, Offices } from '../../common'
 import { utils } from '../../services'
-import { getHomePage } from '../../actions'
+import { getHomePage, getProjects } from '../../actions'
 
 
 class Home extends React.Component {
@@ -20,12 +21,12 @@ class Home extends React.Component {
 
   render () {
     const { isLoaded } = this.state
-    const { assets, homePage } = this.props
+    const { assets, homePage, projects } = this.props
     
     return isLoaded ? (
       <>
         <Header/>
-        <HomeScreen data={homePage} assets={assets} />
+        <HomeScreen data={homePage} assets={assets} projects={projects} />
         <Footer/>
       </>
     ) : (
@@ -34,23 +35,29 @@ class Home extends React.Component {
   }
 
   componentDidMount () {
-    const { getHomePage } = this.props
+    const { getHomePage, getProjects } = this.props
 
     getHomePage().then(() => {
-      this.setState({
-        isLoaded: true
+      getProjects().then(() => {
+        this.setState({
+          isLoaded: true
+        })
       })
     })
   }
 }
 
-const HomeScreen = ({ data, assets, offices }) => {
+const HomeScreen = ({ data, assets, projects }) => {
   const origin = process.env.PUBLIC_URL
   const {
     companySlogan,
     servicesTitle,
     servicesItems,
     servicesButtonText,
+    projectsTitle,
+    projectsItems,
+    readMoreText,
+    projectsLinkText,
     partnersTitle,
     partnersItems,
     officesTitle,
@@ -101,7 +108,7 @@ const HomeScreen = ({ data, assets, offices }) => {
   
   return (
     <>
-      <main className="home">
+      <main className="home-page">
         <div className="content">
 
           <div className="social-media-links">{
@@ -140,7 +147,42 @@ const HomeScreen = ({ data, assets, offices }) => {
                 )
               })
             }</ul>
-            <Button>{servicesButtonText}</Button>
+            <Link to={origin + "/services"} className="link">
+              <Button>{servicesButtonText}</Button>
+            </Link>
+          </section>
+
+          <section className="projects">
+            <p className="text-h1 title">{projectsTitle}</p>
+            <div className="projects-list">{
+              projectsItems.map((item, i) => {
+                const project = utils.findAsset(projects, item)
+                const {
+                  thumbnail, title, category, description
+                } = project.fields
+                const { src, alt } = utils.findImage(assets, thumbnail)
+
+                return (
+                  <Link to={origin + "/projects"} className="project-item" key={i}>
+                    <div className="image">
+                      <img src={src} alt={alt} />
+                    </div>
+                    <p className="text-label">{category}</p>
+                    <p className="text-h1">{title}</p>
+                    <div className="description">{
+                      utils.renderPlainTextParagraphs(description)
+                    }</div>
+                    <div className="link">
+                      <span>{readMoreText}</span>
+                      <ArrowRight/>
+                    </div>
+                  </Link>
+                )
+              })
+            }</div>
+            <Link to={origin + "/projects"} className="link">
+              <Button>{projectsLinkText}</Button>
+            </Link>
           </section>
 
           <div className="get-in-touch">
@@ -198,6 +240,7 @@ const socialMediaItems = [
 const mapStateToProps = (state) => ({
   assets: state.assets,
   homePage: state.homePage,
+  projects: state.projects,
 })
 
-export default connect(mapStateToProps, { getHomePage })(Home)
+export default connect(mapStateToProps, { getHomePage, getProjects })(Home)

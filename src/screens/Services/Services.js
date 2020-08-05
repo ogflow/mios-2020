@@ -58,9 +58,6 @@ const ServicesScreen = ({ data, assets, services }) => {
     contactUsLinkText,
   } = data
 
-  console.log('data', data)
-  console.log('services', services)
-
   const renderServiceItems = function (items) {
     if (!items) return null
 
@@ -87,7 +84,7 @@ const ServicesScreen = ({ data, assets, services }) => {
   }
 
   return (
-    <main className="services">
+    <main className="services-page">
 
       <section className="expertise">
         <p className="text-h1">{ourExpertiseTitle}</p>

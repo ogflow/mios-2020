@@ -12,6 +12,14 @@ export function findAsset (assets, target) {
   return asset
 }
 
+export function findImage (assets, target) {
+  const image = findAsset(assets, target)
+  return {
+    src: image.fields.file.url,
+    alt: image.fields.title
+  }
+}
+
 export function returnPromise (callback) {
   return new Promise ((resolve, reject) => {
     resolve(callback)
@@ -39,6 +47,7 @@ export function renderPlainTextParagraphs (data) {
 
 export default {
   findAsset,
+  findImage,
   returnPromise,
   renderPlainTextParagraphs,
 }

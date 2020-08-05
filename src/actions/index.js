@@ -1,5 +1,6 @@
 import { 
-  GET_ASSETS, GET_OFFICES, GET_TEAM_MEMBERS, GET_SERVICES, GET_HOME_PAGE, GET_ABOUT_US_PAGE, GET_CONTACT_PAGE, GET_SERVICES_PAGE
+  GET_ASSETS, GET_OFFICES, GET_TEAM_MEMBERS, GET_SERVICES, GET_PROJECTS,
+  GET_HOME_PAGE, GET_ABOUT_US_PAGE, GET_CONTACT_PAGE, GET_SERVICES_PAGE, GET_PROJECTS_PAGE
 } from './actionTypes'
 import { apiService, utils } from '../services'
 
@@ -17,6 +18,27 @@ export function getAssets() {
       .then(res => {
         dispatch({
           type: GET_ASSETS,
+          payload: res
+        })
+      })
+    )
+  }
+}
+
+export function getProjects() {
+  return function (dispatch, getState) {
+    const cachedData = getState().projects
+
+    return !!cachedData ? (
+      utils.returnPromise(dispatch({
+        type: GET_PROJECTS,
+        payload: cachedData
+      }))
+    ) : (
+      apiService.getProjects()
+      .then(res => {
+        dispatch({
+          type: GET_PROJECTS,
           payload: res
         })
       })
@@ -164,6 +186,27 @@ export function getServicesPage() {
       .then(res => {
         dispatch({
           type: GET_SERVICES_PAGE,
+          payload: res
+        })
+      })
+    )
+  }
+}
+
+export function getProjectsPage() {
+  return function (dispatch, getState) {
+    const cachedData = getState().projectsPage
+
+    return !!cachedData ? (
+      utils.returnPromise(dispatch({
+        type: GET_PROJECTS_PAGE,
+        payload: cachedData
+      }))
+    ) : (
+      apiService.getProjectsPage()
+      .then(res => {
+        dispatch({
+          type: GET_PROJECTS_PAGE,
           payload: res
         })
       })

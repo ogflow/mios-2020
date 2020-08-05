@@ -1,5 +1,6 @@
 import { 
-  GET_ASSETS, GET_OFFICES, GET_TEAM_MEMBERS, GET_SERVICES, GET_HOME_PAGE, GET_ABOUT_US_PAGE, GET_CONTACT_PAGE, GET_SERVICES_PAGE
+  GET_ASSETS, GET_OFFICES, GET_TEAM_MEMBERS, GET_SERVICES, GET_PROJECTS,
+  GET_HOME_PAGE, GET_ABOUT_US_PAGE, GET_CONTACT_PAGE, GET_SERVICES_PAGE, GET_PROJECTS_PAGE
 } from '../actions/actionTypes'
 
 const initialState = {
@@ -12,6 +13,7 @@ const initialState = {
   aboutUsPage: null,
   contactPage: null,
   servicesPage: null,
+  projectsPage: null,
 }
 
 const rootReducer = (state = initialState, action) => {
@@ -20,6 +22,11 @@ const rootReducer = (state = initialState, action) => {
     case GET_ASSETS:
       return Object.assign({}, state, {
         assets: action.payload
+      })
+
+    case GET_PROJECTS:
+      return Object.assign({}, state, {
+        projects: action.payload
       })
 
     case GET_OFFICES:
@@ -56,6 +63,11 @@ const rootReducer = (state = initialState, action) => {
     case GET_SERVICES_PAGE:
       return Object.assign({}, state, {
         servicesPage: action.payload
+      })
+
+    case GET_PROJECTS_PAGE:
+      return Object.assign({}, state, {
+        projectsPage: action.payload
       })
 
     default:

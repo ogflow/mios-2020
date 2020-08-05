@@ -24,6 +24,7 @@
 
         & * {
           fill: var(--header-accent-color);
+          @include transition;
         }
       }
     }

@@ -54,7 +54,7 @@ const AboutScreen = ({ data, assets, teamMembers }) => {
   const pageCoverImage = utils.findAsset(assets, pageCover)
 
   return (
-    <main className="about-us">
+    <main className="about-us-page">
 
       <div className="page-cover">
         <div className="image">

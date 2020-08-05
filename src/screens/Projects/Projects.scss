@@ -1,0 +1,174 @@
+@import "../../styles/variables.scss";
+@import "../../styles/mixins.scss";
+
+.projects-page {
+  .slider {
+    height: 100vh;
+    width: 100vw;
+    position: relative;
+    overflow: hidden;
+    
+    .project-item {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 1;
+      top: -100%;
+      @include transition('slow', 'top');
+
+      .cover-mask {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 2;
+        background: linear-gradient(to bottom, rgba(255,255,255, 0) 50%, rgba(255,255,255, 0.2) 100%);
+      }
+
+      .cover {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      .content {
+        z-index: 3;
+        position: absolute;
+        bottom: 80px;
+        left: 100px;
+        max-width: 400px;
+
+        .text-label {
+          margin-bottom: 30px;
+        }
+
+        .text-h1 {
+          margin-bottom: 10px;
+        }
+
+        .separator {
+          margin-bottom: 30px;
+          width: 80px;
+          height: 5px;
+          background: $green;
+          background: var(--project-accent-color, $green);
+        }
+
+        .description {
+          margin-bottom: 30px;
+        }
+
+        .link {
+          margin-top: 20px;
+          color: $green;
+          color: var(--project-accent-color, $green);
+          display: flex;
+          height: 28px;
+
+          span {
+            border-bottom: 2px solid transparent;
+            @include transition;
+          }
+
+          svg {
+            margin: 5px 0 0 8px;
+
+            & * {
+              fill: $green;
+              fill: var(--project-accent-color, $green);
+            }
+          }
+
+          &:hover {
+            span {
+              border-color: $green;
+              border-color: var(--project-accent-color, $green);
+            }
+          }
+        }
+      }
+
+      &.current {
+        top: 0%;
+        z-index: 2;
+      }
+
+      &.current ~ .project-item {
+        z-index: 3;
+        top: 100%;
+      }
+
+      &.is-white {
+        .content {
+          color: $white;
+        }
+
+        .cover-mask {
+          background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0.1) 100%);
+        }
+      }
+    }
+  }
+
+  .actions {
+    z-index: 5;
+    position: absolute;
+    bottom: 80px;
+    right: 100px;
+
+    .action-button {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: $black;
+      @include transition;
+
+      &:nth-child(2) {
+        margin-top: 20px;
+      }
+
+      &.off {
+        pointer-events: none;
+        opacity: 0.5;
+      }
+
+      &:hover {
+        cursor: pointer;
+        background: $green;
+        background: var(--project-accent-color, $green);
+      }
+
+      svg {
+        & * {
+          @include transition;
+          stroke: $white;
+        }
+      }
+    }
+  }
+  
+
+  &.is-white {
+    .actions {
+      .action-button {
+        background: $white;
+
+        svg {
+          & * {
+            stroke: $black;
+          }
+        }
+        
+        &:hover {
+          background: $green;
+        }
+      }
+    }
+  }
+}

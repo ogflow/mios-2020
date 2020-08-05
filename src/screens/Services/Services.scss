@@ -1,6 +1,7 @@
 @import "../../styles/variables.scss";
+@import "../../styles/mixins.scss";
 
-main.services {
+.services-page {
   background: $black;
   color: $white;
   padding-top: 200px;
@@ -86,6 +87,17 @@ main.services {
 
             & * {
               fill: $green;
+            }
+          }
+
+          span {
+            border-bottom: 2px solid transparent;
+            @include transition;
+          }
+          
+          &:hover {
+            span {
+              border-color: $green;
             }
           }
         }

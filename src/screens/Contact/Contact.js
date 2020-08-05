@@ -63,7 +63,7 @@ const ContactScreen = ({ data, assets }) => {
   } = data
 
   return (
-    <main className="contact">
+    <main className="contact-us-page">
 
       <section className="want-to-talk">
         <p className="text-h1">{wantToTalkTitle}</p>
