@@ -75,7 +75,8 @@ const ProjectsScreen = ({ data, assets, projects, onTextColorChange, hasBlackTex
 
   const renderProjectItem = (item) => {
     const {
-      cover, title, description, category, customAccentColor } = item.fields
+      cover, title, description, category, customAccentColor, urlSlug
+    } = item.fields
     const { src, alt } = utils.findImage(assets, cover)
 
     return (
@@ -87,7 +88,7 @@ const ProjectsScreen = ({ data, assets, projects, onTextColorChange, hasBlackTex
           <div className="description">{
             utils.renderPlainTextParagraphs(description)
           }</div>
-          <Link to={origin + "/projects"} className="link">
+          <Link to={origin + `/projects/${urlSlug}/details`} className="link">
             <span>{readMoreText}</span>
             <ArrowRight/>
           </Link>
@@ -146,32 +147,6 @@ const ProjectsScreen = ({ data, assets, projects, onTextColorChange, hasBlackTex
     </main>
   )
 }
-
-/**
- * 
-<div className={"slider " + (transition ? `to-${transition}` : '')}>
-
-  { prevProject && (
-    <div className={"project-item previous " 
-    + (!prevProject.fields.hasBlackText ? 'is-white ' : '')}>
-      { renderProjectItem(prevProject)}
-    </div>
-  )}
-
-  <div className={"project-item current " 
-    + (!project.fields.hasBlackText ? 'is-white ' : '')}>
-    { renderProjectItem(project) }
-  </div>
-
-  { nextProject && (
-    <div className={"project-item next " 
-    + (!nextProject.fields.hasBlackText ? 'is-white ' : '')}>
-      { renderProjectItem(nextProject)}
-    </div>
-  )}
-</div>
-
- */
 
 const mapStateToProps = (state) => ({
   assets: state.assets,

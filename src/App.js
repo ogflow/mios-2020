@@ -8,7 +8,7 @@ export class App extends React.Component {
   constructor (props) {
     super(props)
     this.state = {
-      isInitiated: true,
+      isInitiated: false,
     }
   }
 
@@ -23,7 +23,13 @@ export class App extends React.Component {
   }
 
   componentDidMount () {
-    this.props.getAssets()
+    const { getAssets } = this.props
+
+    getAssets().then(() => {
+      this.setState({
+        isInitiated: true
+      })
+    })
   }
 }
 

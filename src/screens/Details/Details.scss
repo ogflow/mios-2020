@@ -1,0 +1,123 @@
+@import "../../styles/variables.scss";
+@import "../../styles/mixins.scss";
+
+.details-page {
+
+  .cover {
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+
+    .cover-text {
+      flex: 0 0 auto;
+      padding: 175px 100px 45px 100px;
+
+      .text-h1 {
+        text-align: center;
+      }
+    }
+  
+    .cover-image {
+      flex: 1 1 50vh;
+      height: 50vh;
+      width: 100%;
+  
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+    }
+  }
+
+  .content {
+    display: flex;
+    flex-direction: column;
+    padding: 50px 100px 150px 100px;
+
+    .brief {
+      margin: 0 auto;
+      max-width: 680px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+
+      .text-label {
+        margin-bottom: 30px;
+      }
+
+      .text-h1 {
+        margin-bottom: 10px;
+      }
+
+      .separator {
+        margin-bottom: 30px;
+        width: 80px;
+        height: 5px;
+        background: $green;
+        background: var(--project-accent-color, $green);
+      }
+
+      .description {
+        margin-bottom: 20px;
+      }
+
+      .tags-list {
+        display: flex;
+
+        .tag {
+          padding: 5px 30px;
+          border: 1px solid $gray-light;
+          border-radius: 20px;
+
+          &:not(:last-child) {
+            margin-right: 10px;
+          }
+        }
+      }
+    }
+  }
+
+  .next-project {
+    position: relative;
+    display: block;
+    height: 320px;
+    background: $black;
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 0.8;
+      @include transition;
+    }
+
+    .text-content {
+      z-index: 2;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      text-align: center;
+      color: $white;
+
+      .text-h1 {
+        display: flex;
+        align-items: center;
+        
+        span {
+          margin-right: 30px;
+        }
+      }
+    }
+
+    &:hover {
+      img {
+        opacity: 0.5;
+      }
+    }
+  }
+
+}

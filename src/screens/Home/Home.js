@@ -158,12 +158,12 @@ const HomeScreen = ({ data, assets, projects }) => {
               projectsItems.map((item, i) => {
                 const project = utils.findAsset(projects, item)
                 const {
-                  thumbnail, title, category, description
+                  thumbnail, title, category, description, urlSlug
                 } = project.fields
                 const { src, alt } = utils.findImage(assets, thumbnail)
 
                 return (
-                  <Link to={origin + "/projects"} className="project-item" key={i}>
+                  <Link to={origin + `/projects/${urlSlug}/details`} className="project-item" key={i}>
                     <div className="image">
                       <img src={src} alt={alt} />
                     </div>
