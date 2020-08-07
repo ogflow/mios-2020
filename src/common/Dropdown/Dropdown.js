@@ -1,5 +1,6 @@
 import React, { useState, useRef } from 'react'
 import './Dropdown.scss'
+import { ReactComponent as ArrowDropdown } from '../../assets/icons/arrow_dropdown.svg'
 
 const Dropdown = ({ label, name, options, required }) => {
   const [focus, setFocus] = useState(false)
@@ -33,6 +34,7 @@ const Dropdown = ({ label, name, options, required }) => {
         <p className="placeholder">{label}</p>
         <div className="select" onClick={handleClick}>{value}</div>
         <div className="border"></div>
+        <div className="arrow"><ArrowDropdown/></div>
       </div>
 
       <ul className="option-list">{
