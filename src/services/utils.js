@@ -16,7 +16,8 @@ export function findImage (assets, target) {
   const image = findAsset(assets, target)
   return {
     src: image.fields.file.url,
-    alt: image.fields.title
+    alt: image.fields.title,
+    caption: image.fields.description
   }
 }
 

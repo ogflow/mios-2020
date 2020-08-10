@@ -1,6 +1,5 @@
 import { 
-  GET_ASSETS, GET_OFFICES, GET_TEAM_MEMBERS, GET_SERVICES, GET_PROJECTS,
-  GET_HOME_PAGE, GET_ABOUT_US_PAGE, GET_CONTACT_PAGE, GET_SERVICES_PAGE, GET_PROJECTS_PAGE
+  GET_ASSETS, GET_OFFICES, GET_TEAM_MEMBERS, GET_SERVICES, GET_PROJECTS, GET_CONTENT_BLOCKS, GET_HOME_PAGE, GET_ABOUT_US_PAGE, GET_CONTACT_PAGE, GET_SERVICES_PAGE, GET_PROJECTS_PAGE
 } from './actionTypes'
 import { apiService, utils } from '../services'
 
@@ -39,6 +38,27 @@ export function getProjects() {
       .then(res => {
         dispatch({
           type: GET_PROJECTS,
+          payload: res
+        })
+      })
+    )
+  }
+}
+
+export function getContentBlocks() {
+  return function (dispatch, getState) {
+    const cachedData = getState().contentBlocks
+
+    return !!cachedData ? (
+      utils.returnPromise(dispatch({
+        type: GET_CONTENT_BLOCKS,
+        payload: cachedData
+      }))
+    ) : (
+      apiService.getContentBlocks()
+      .then(res => {
+        dispatch({
+          type: GET_CONTENT_BLOCKS,
           payload: res
         })
       })

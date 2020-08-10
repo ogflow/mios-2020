@@ -163,20 +163,22 @@ const HomeScreen = ({ data, assets, projects }) => {
                 const { src, alt } = utils.findImage(assets, thumbnail)
 
                 return (
-                  <Link to={origin + `/projects/${urlSlug}/details`} className="project-item" key={i}>
-                    <div className="image">
-                      <img src={src} alt={alt} />
-                    </div>
+                  <div className="project-item" key={i}>
+                    <Link to={origin + `/projects/${urlSlug}/details`}>
+                      <div className="image">
+                        <img src={src} alt={alt} />
+                      </div>
+                    </Link>
                     <p className="text-label">{category}</p>
                     <p className="text-h1">{title}</p>
                     <div className="description">{
                       utils.renderPlainTextParagraphs(description)
                     }</div>
-                    <div className="link">
+                    <Link className="link" to={origin + `/projects/${urlSlug}/details`}>
                       <span>{readMoreText}</span>
                       <ArrowRight/>
-                    </div>
-                  </Link>
+                    </Link>
+                  </div>
                 )
               })
             }</div>

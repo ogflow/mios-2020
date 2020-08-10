@@ -22,6 +22,11 @@ const getProjects = () => {
   .then(res => res.data.items)
 }
 
+const getContentBlocks = () => {
+  return axios.get(`/spaces/${SPACE_ID}/environments/${ENVIRONMENT_ID}/entries?content_type=contentBlock`)
+  .then(res => res.data.items)
+}
+
 const getOffices = () => {
   return axios.get(`/spaces/${SPACE_ID}/environments/${ENVIRONMENT_ID}/entries?content_type=officeItem`)
   .then(res => res.data.items)
@@ -65,6 +70,7 @@ const getProjectsPage = () => {
 const apiService = {
   getAssets,
   getProjects,
+  getContentBlocks,
   getOffices,
   getServices,
   getTeamMembers,

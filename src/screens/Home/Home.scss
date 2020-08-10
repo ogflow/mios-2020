@@ -97,6 +97,12 @@
                 object-fit: cover;
                 @include transition;
               }
+
+              &:hover {
+                img {
+                  transform: scale(1.1);
+                }
+              }
             }
 
             .text-label {
@@ -134,14 +140,6 @@
               &:hover {
                 span {
                   border-color: $green;
-                }
-              }
-            }
-
-            &:hover {
-              .image {
-                img {
-                  transform: scale(1.1);
                 }
               }
             }

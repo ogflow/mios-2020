@@ -1,12 +1,18 @@
-import React, { useState, useEffect } from 'react'
+import React from 'react'
 import { connect } from 'react-redux'
 import { Link, Redirect } from 'react-router-dom'
 
 import { ReactComponent as ArrowRight } from '../../assets/icons/arrow_next_project.svg'
 import './Details.scss'
 import { utils } from '../../services'
-import { Footer, Header } from '../../common'
-import { getProjects } from '../../actions'
+import { Button, Footer, Header } from '../../common'
+import { getProjects, getProjectsPage, getContentBlocks } from '../../actions'
+
+const TYPE_TEXT_IMAGE = 'Text + Image'
+const TYPE_IMAGE_TEXT = 'Image + Text'
+const TYPE_HERO_IMAGE_TEXT = 'Hero-Image + Text'
+const TYPE_TWO_IMAGES_TEXT = 'Two Images + Text'
+const TYPE_HIGHLIGHTED_TEXT = 'Highlighted Text'
 
 class Details extends React.Component {
   constructor (props) {
@@ -19,14 +25,14 @@ class Details extends React.Component {
   render () {
     const origin = process.env.PUBLIC_URL
     const { isLoaded } = this.state
-    const { assets, projects, match: { params: { projectId } } } = this.props
+    const { assets, contentBlocks, projects, projectsPage,  match: { params: { projectId } }} = this.props
     const project = projects && projects.find(x => x.fields.urlSlug === projectId)
-    
+
     return isLoaded ? (
-      project ? (
+      project && projectsPage ? (
         <>
           <Header isBlack />
-          <DetailsScreen data={project} assets={assets} projects={projects} />
+          <DetailsScreen data={project} assets={assets} contentBlocks={contentBlocks} projects={projects} projectsItems={projectsPage.projectsItems} />
           <Footer />
         </>
       ) : (
@@ -38,17 +44,21 @@ class Details extends React.Component {
   }
 
   componentDidMount () {
-    const { getProjects } = this.props
+    const { getProjects, getProjectsPage, getContentBlocks } = this.props
 
     getProjects().then(() => {
-      this.setState({
-        isLoaded: true
+      getContentBlocks().then(() => {
+        getProjectsPage().then(() => {
+          this.setState({
+            isLoaded: true
+          })
+        })
       })
     })
   }
 }
 
-const DetailsScreen = ({ data, assets, projects }) => {
+const DetailsScreen = ({ data, assets, contentBlocks, projects, projectsItems }) => {
   const origin = process.env.PUBLIC_URL
   const {
     cover,
@@ -57,17 +67,19 @@ const DetailsScreen = ({ data, assets, projects }) => {
     title,
     description,
     tags,
+    content,
   } = data.fields
   const coverImg = utils.findImage(assets, cover)
 
-
   const renderNextProjectLink = () => {
-    const projectIndex = projects.indexOf(data)
-    const nextProjectIndex = projectIndex + 1 !== projects.length ? projectIndex + 1 : 0
-    const nextProject = projects.length > 1 ? projects[nextProjectIndex] : null
+    if (projectsItems.length <= 1) return null
 
-    if (!nextProject) return null
+    const projectRef = utils.findAsset(projectsItems, data)
+    const projectIndex = projectsItems.indexOf(projectRef)
+    const nextProjectIndex = projectIndex + 1 === projectsItems.length ? 0 : projectIndex + 1
+    const nextProjectRef = projectsItems[nextProjectIndex]
 
+    const nextProject = utils.findAsset(projects, nextProjectRef)
     const { cover, title, urlSlug } = nextProject.fields
     const { src, alt } = utils.findImage(assets, cover)
 
@@ -113,6 +125,24 @@ const DetailsScreen = ({ data, assets, projects }) => {
           }</ul>
         </div>
 
+        <div className="content-blocks">{
+          content.map((item, i) => {
+            const block = utils.findAsset(contentBlocks, item)
+            
+            return <ContentBlock assets={assets} data={block} key={i} />
+          })
+        }</div>
+
+      </div>
+
+      <div className="contact">
+        <div className="text">
+          <p className="text-h1">Let's make great things together!</p>
+          <p className="text-body">Become one of the satisfied clients, partners, and successful businesses that we have had the pleasure of working with.</p>
+          <Link to={origin + "/contact"}>
+            <Button style={{ '--accent-color': 'black', '--contrast-color': 'white' }}>Get in touch</Button>
+          </Link>
+        </div>
       </div>
 
       { renderNextProjectLink() }
@@ -121,9 +151,88 @@ const DetailsScreen = ({ data, assets, projects }) => {
   )
 }
 
+const ContentBlock = ({ assets, data }) => {
+  const { type, title, text, images } = data.fields
+  
+  if (type === TYPE_TEXT_IMAGE || type === TYPE_IMAGE_TEXT || type === TYPE_HERO_IMAGE_TEXT) {
+    const image = utils.findImage(assets, images[0])
+    const classNames = 'block'
+      + (type === TYPE_HERO_IMAGE_TEXT
+          ? ' block_hero'
+          : ' block_image-text')
+      + (type === TYPE_TEXT_IMAGE ? ' is-reversed' : '')
+    
+    return (
+      <div className={classNames}>
+        <div className="image">
+          <div className="image-wrap">
+            <img src={image.src} alt={image.alt}/>
+          </div>
+          { !!image.caption && (
+            <p className="text-caption">{image.caption}</p>
+          )}
+        </div>
+        <div className="text">
+          <p className="title">{title}</p>
+          <div className="description">{
+            utils.renderPlainTextParagraphs(text)
+          }</div>
+        </div>
+      </div>
+    )
+  }
+
+  if (type === TYPE_HIGHLIGHTED_TEXT) {
+    return (
+      <div className="block block_text">
+        <div className="text">
+          <div className="description text-h2">{
+            utils.renderPlainTextParagraphs(text)
+          }</div>
+          { title && (
+            <p className="text-label">{title}</p>
+          )}
+        </div>
+      </div>
+    )
+  }
+
+  if (type === TYPE_TWO_IMAGES_TEXT) {
+    return (
+      <div className="block block_double">
+        <div className="images-row">{
+          images.map((img, i) => {
+            const { src, alt, caption } = utils.findImage(assets, img)
+            return (
+              <div className="image" key={i}>
+                <div className="image-wrap">
+                  <img src={src} alt={alt}/>
+                </div>
+                { !!caption && (
+                  <p className="text-caption">{caption}</p>
+                )}
+              </div>
+            )
+          })
+        }</div>
+        <div className="text">
+          <p className="text-h2">{title}</p>
+          <div className="description">{
+            utils.renderPlainTextParagraphs(text)
+          }</div>
+        </div>
+      </div>
+    )
+  }
+
+  return null
+}
+
 const mapStateToProps = (state) => ({
   assets: state.assets,
+  contentBlocks: state.contentBlocks,
   projects: state.projects,
+  projectsPage: state.projectsPage,
 })
 
-export default connect(mapStateToProps, { getProjects })(Details)
+export default connect(mapStateToProps, { getProjects, getProjectsPage, getContentBlocks })(Details)

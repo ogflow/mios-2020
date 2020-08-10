@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useCallback } from 'react'
 import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
 
@@ -64,14 +64,43 @@ const ProjectsScreen = ({ data, assets, projects, onTextColorChange, hasBlackTex
   const [ index, setIndex ] = useState(0)
   const [ transition, setTransition ] = useState(false)
 
-  const projectRef = projectsItems[index]
-  const project = utils.findAsset(projects, projectRef)
-  const prevProjectRef = projectsItems[index - 1]
-  const nextProjectRef = projectsItems[index + 1]
+  const isTheOnlyProject = projectsItems.length === 1
+  const project = utils.findAsset(projects, projectsItems[index])
+  const prevProjectIndex = index === 0 ? projectsItems.length - 1 : index - 1
+  const nextProjectIndex = index + 1 === projectsItems.length ? 0 : index + 1
 
   useEffect(() => {
     onTextColorChange(project.fields.hasBlackText)
   }, [index, onTextColorChange, project])
+  
+  const handleChange = useCallback((nextIndex, duration = 300) => {
+    if (transition) return
+
+    setTransition(true)
+    setIndex(nextIndex)
+    setTimeout(() => {
+      setTransition(false)
+    }, duration)
+  }, [transition])
+
+  const onScroll = useCallback((e) => {
+    if (transition) return
+    
+    const isDown = e.deltaY > 0
+    const indexVal = isDown ? nextProjectIndex : prevProjectIndex
+
+    handleChange(indexVal, 1000)
+  }, [transition, handleChange, nextProjectIndex, prevProjectIndex])
+
+  useEffect(() => {
+    if (isTheOnlyProject || transition) return
+
+    window.addEventListener('wheel', onScroll)
+
+    return () => {
+      window.removeEventListener('wheel', onScroll)
+    }
+  }, [ transition, isTheOnlyProject, onScroll ])
 
   const renderProjectItem = (item) => {
     const {
@@ -99,49 +128,47 @@ const ProjectsScreen = ({ data, assets, projects, onTextColorChange, hasBlackTex
     )
   }
 
-  const handleChange = (nextIndex) => {
-    if (transition) return
-
-    setIndex(nextIndex)
-    setTransition(true)
-    setTimeout(() => {
-      setTransition(false)
-    }, 600)
-  }
-
   return (
     <main className={"projects-page" + (!hasBlackText ? ' is-white' : '')}>
 
-      <div className="actions" style={project.fields.customAccentColor && { '--project-accent-color': project.fields.customAccentColor }}>
-        <div className={"action-button previous" + (!prevProjectRef ? ' off' : '')} onClick={() => handleChange(index - 1)}>
-          <ArrowUp/>
+      { !isTheOnlyProject && (
+        <div className="actions" style={project.fields.customAccentColor && { '--project-accent-color': project.fields.customAccentColor }}>
+          <div className="action-button previous" onClick={() => handleChange(prevProjectIndex)}>
+            <ArrowUp/>
+          </div>
+          <div className="action-button next" onClick={() => handleChange(nextProjectIndex)}>
+            <ArrowDown/>
+          </div>
         </div>
-        <div className={"action-button next" + (!nextProjectRef ? ' off' : '')} onClick={() => handleChange(index + 1)}>
-          <ArrowDown/>
-        </div>
-      </div>
+      )}
 
       <div className="slider">{
-        projectsItems.map((item, i) => {
-          const isVisible = [projectRef, prevProjectRef, nextProjectRef].includes(item)
-          
-          if (!isVisible) {
+        isTheOnlyProject ? (
+          <div className="project-item current">{
+            renderProjectItem(project)
+          }</div>
+        ) : (
+          projectsItems.map((item, i) => {
+            const isVisible = [prevProjectIndex, index, nextProjectIndex].includes(i)
+            
+            if (!isVisible) {
+              return (
+                <div key={i} className="project-item"></div>
+              )
+            }
+
+            const projectItem = utils.findAsset(projects, item)
+
             return (
-              <div key={i} className="project-item"></div>
+              <div key={i} className={"project-item "
+                + (!projectItem.fields.hasBlackText ? 'is-white ' : '')
+                + (i === index ? 'current' : i === prevProjectIndex ? 'previous' : i === nextProjectIndex ? 'next' : '')
+              }>
+                { renderProjectItem(projectItem) }
+              </div>
             )
-          }
-
-          const projectItem = utils.findAsset(projects, item)
-
-          return (
-            <div key={i} className={"project-item "
-              + (!projectItem.fields.hasBlackText ? 'is-white ' : '')
-              + (i === index ? 'current' : i === index - 1 ? 'previous' : i === index + 1 ? 'next' : '')
-            }>
-              { renderProjectItem(projectItem) }
-            </div>
-          )
-        })
+          })
+        )
       }</div>
 
     </main>

@@ -2,6 +2,8 @@
 @import '../../styles/mixins.scss';
 
 .button {
+  --accent-color: #{$green};
+  --contrast-color: #{$black};
   display: flex;
   width: 250px;
   height: 50px;
@@ -9,19 +11,23 @@
   justify-content: center;
   background: transparent;
   border: 1px solid $green;
+  border: 1px solid var(--accent-color);
   @include transition;
 
   span {
     color: $green;
+    color: var(--accent-color);
     @include transition;
   }
 
   &:hover {
     cursor: pointer;
     background: $green;
+    background: var(--accent-color);
 
     span {
       color: $black;
+      color: var(--contrast-color);
     }
   }
 }
