@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/mios-2020/precache-manifest.37359e1fd51b05f862e44c38121c2625.js"
+  "/mios-2020/precache-manifest.5d4267e8cf951237bdcec04b4a4d1e0e.js"
 );
 
 self.addEventListener('message', (event) => {
