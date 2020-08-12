@@ -117,12 +117,16 @@
 
           .services-list {
             li {
-              &:not(.is-centered):nth-child(odd) {
-                transform: translateX(-150vw) skewX(50deg) scale3d(2, 1.5, 2);
+              &:nth-child(odd) {
+                transform: translateX(-150vw);
               }
   
-              &:not(.is-centered):nth-child(even) {
-                transform: translateX(150vw) skewX(-50deg) scale3d(2, 1.5, 2);
+              &:nth-child(even) {
+                transform: translateX(150vw);
+              }
+
+              &.is-centered {
+                transform: translatex(0vw);
               }
             }
           }
