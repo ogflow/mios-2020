@@ -84,7 +84,7 @@ const DetailsScreen = ({ data, assets, contentBlocks, projects, projectsItems })
     const { src, alt } = utils.findImage(assets, cover)
 
     return (
-      <Link to={origin + `/projects/${urlSlug}/details`} className="next-project">
+      <Link to={origin + `/projects/${urlSlug}/details`} className="next-project" onClick={() => window.scrollTo(0, 0)}>
         <div className="text-content">
           <p className="text-label text-uppercase">Next</p>
           <p className="text-h1">

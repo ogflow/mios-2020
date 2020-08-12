@@ -12,16 +12,6 @@ export class App extends React.Component {
     }
   }
 
-  render() {
-    const { isInitiated } = this.state
-    
-    return isInitiated ? (
-      <AppRouter />
-    ) : (
-      <p>loading...</p>
-    )
-  }
-
   componentDidMount () {
     const { getAssets } = this.props
 
@@ -30,6 +20,16 @@ export class App extends React.Component {
         isInitiated: true
       })
     })
+  }
+
+  render() {
+    const { isInitiated } = this.state
+    
+    return isInitiated ? (
+      <AppRouter />
+    ) : (
+      <p>loading...</p>
+    )
   }
 }
 

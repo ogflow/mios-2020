@@ -8,13 +8,33 @@
   .content {
     z-index: 5;
     position: relative;
-    padding: 134px 100px 0 100px;
+    padding: 140px 100px 0 100px;
+
+    @media screen and (max-width: $breakpoint-xl) {
+      padding: 125px 40px 0 40px;
+    }
+
+    @media screen and (max-width: $breakpoint-md) {
+      padding: 85px 20px 0 20px;
+    }
 
     section {
       max-width: 1400px;
       width: 100%;
       margin: 0 auto;
       padding-bottom: 400px;
+
+      @media screen and (max-width: $breakpoint-xl) {
+        padding-bottom: 240px;
+      }
+
+      @media screen and (max-width: $breakpoint-md) {
+        padding-bottom: 160px;
+      }
+
+      @media screen and (max-width: $breakpoint-sm) {
+        padding-bottom: 110px;
+      }
   
       &.company-slogan {
         margin-top: 100vh;
@@ -60,6 +80,36 @@
 
         .button {
           margin: 300px auto 0 auto;
+        }
+
+        @media screen and (max-width: $breakpoint-xl) {
+          .services-list {
+            li {
+              margin-top: 200px;
+            }
+          }
+
+          .button {
+            margin-top: 240px;
+          }
+        }
+
+        @media screen and (max-width: $breakpoint-md) {
+          .services-list {
+            li {
+              margin-top: 100px;
+            }
+          }
+
+          .button {
+            margin-top: 160px;
+          }
+        }
+        
+        @media screen and (max-width: $breakpoint-sm) {
+          .button {
+            margin-top: 110px;
+          }
         }
       }
 
@@ -149,6 +199,55 @@
         .button {
           margin: 100px auto 0 auto;
         }
+
+        @media screen and (max-width: $breakpoint-md) {
+          .projects-list {
+            .project-item {
+              .link {
+                svg {
+                  margin-top: 2px;
+                }
+              }
+            }
+          }
+        }
+
+        @media screen and (max-width: $breakpoint-sm) {
+          .title {
+            margin-bottom: 30px;
+          }
+
+          .projects-list {
+            .project-item {
+              .text-h1 {
+                margin-top: 5px;
+              }
+
+              .link {
+                margin-top: 10px;
+              }
+            }
+          }
+        }
+        
+        @media screen and (max-width: $breakpoint-xs) {
+          .projects-list {
+            flex-direction: column;
+
+            .project-item {
+              width: 100%;
+              flex: 0 0 100%;
+
+              &:nth-child(1) {
+                padding: 0 0 25px 0;
+              }
+
+              &:nth-child(2) {
+                padding: 25px 0 0 0;
+              }
+            }
+          }
+        }
       }
 
       &.partners {
@@ -168,6 +267,33 @@
 
             &:not(:last-child) {
               margin-right: 100px;
+            }
+          }
+        }
+
+        @media screen and (max-width: $breakpoint-md) {
+          .partners-logotypes {
+            img {
+              height: 30px;
+              max-width: 120px;
+              
+              &:not(:last-child) {
+                margin-right: 50px;
+              }
+            }
+          }
+        }
+
+        @media screen and (max-width: $breakpoint-xs) {
+          .partners-logotypes {
+            margin-top: 80px;
+            flex-direction: column;
+
+            img {
+              &:not(:last-child) {
+                margin-right: 0;
+                margin-bottom: 50px;
+              }
             }
           }
         }
@@ -196,6 +322,10 @@
         &:hover {
           padding-left: 40px;
         }
+      }
+      
+      @media screen and (max-width: $breakpoint-xl) {
+        display: none;
       }
     }
 
@@ -241,16 +371,24 @@
           }
         }
       }
+
+      @media screen and (max-width: $breakpoint-xl) {
+        right: 40px;
+      }
+      
+      @media screen and (max-width: $breakpoint-md) {
+        display: none;
+      }
     }
   }
   
   .logotype-metamorphose {
     z-index: 1;
     position: fixed;
-    top: 50%;
-    left: 50%;
-    width: 100%;
-    height: 100%;
+    top: 50vh;
+    left: 50vw;
+    width: 100vw;
+    height: 100vh;
     transform: translate(-50%, -50%);
     display: flex;
     justify-content: center;
@@ -274,6 +412,15 @@
 
       svg {
         transform: scale(1.2);
+      }
+    }
+
+    @media screen and (max-width: $breakpoint-md) {
+      svg {
+        width: 60vw;
+        height: 60vw;
+        max-width: 400px;
+        max-height: 400px;
       }
     }
   }

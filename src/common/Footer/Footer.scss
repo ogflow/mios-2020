@@ -1,5 +1,6 @@
 @import "../../styles/variables.scss";
 @import "../../styles/mixins.scss";
+@import "../../styles/typography.scss";
 
 .footer {
   z-index: 10;
@@ -86,12 +87,73 @@
         }
 
         a {
+          display: block;
           @include transition;
 
           &:hover {
             opacity: 0.4;
           }
         }
+      }
+    }
+  }
+
+  @media screen and (max-width: $breakpoint-xl) {
+    padding: 40px;
+  }
+
+  @media screen and (max-width: $breakpoint-md) {
+    padding: 50px 20px 40px 20px;
+    flex-direction: column;
+    align-items: center;
+
+    .menu {
+      display: none;
+    }
+
+    .contacts {
+      margin: 30px 0 0 0;
+      text-align: center;
+
+      .text-subheading {
+        margin-bottom: 15px;
+      }
+
+      .text-caption {
+        @include text-body;
+        margin-top: 10px;
+      }
+    }
+
+    .aside-block {
+      margin: 0;
+      align-items: center;
+
+      .scroll-trigger {
+        position: absolute;
+        top: 30px;
+        right: 30px;
+      }
+
+      .social-links {
+        margin: 80px auto 0 auto;
+        flex-direction: column;
+        align-items: center;
+
+        li {
+          border-bottom: 1px solid $black;
+          text-transform: uppercase;
+          @include text-caption();
+
+          &:not(:first-child) {
+            margin: 15px 0 0 0;
+          }
+        }
+      }
+
+      .text-caption {
+        margin-top: 80px;
+        color: $gray-dark;
       }
     }
   }

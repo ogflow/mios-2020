@@ -7,7 +7,7 @@
   display: flex;
 
   .office {
-    width: 50px;
+    width: 50%;
     flex: 0 0 50%;
 
     &:nth-child(odd) {
@@ -53,6 +53,35 @@
       width: 80px;
       height: 5px;
       background: $green;
+    }
+  }
+  
+  @media screen and (max-width: $breakpoint-xl) {
+    
+  }
+
+  @media screen and (max-width: $breakpoint-md) {
+    
+  }
+
+  @media screen and (max-width: $breakpoint-sm) {
+    margin-top: 30px;
+  }
+
+  @media screen and (max-width: $breakpoint-xs) {
+    flex-direction: column;
+
+    .office {
+      width: 100%;
+      flex: 0 0 100%;
+
+      &:nth-child(odd) {
+        padding: 0 0 15px 0;
+      }
+  
+      &:nth-child(even) {
+        padding: 15px 0 0 0;
+      }
     }
   }
 }

@@ -8,6 +8,12 @@
   letter-spacing: 0.18px;
   text-transform: none;
   text-decoration: none;
+
+  @media screen and (max-width: $breakpoint-md) {
+    font-size: 14px;
+    line-height: 20px;
+    letter-spacing: 0.1px;
+  }
 }
 
 @mixin text-caption () {
@@ -16,6 +22,12 @@
   font-size: 12px;
   line-height: 28px;
   letter-spacing: 0.14px;
+
+  @media screen and (max-width: $breakpoint-md) {
+    font-size: 10px;
+    line-height: 16px;
+    letter-spacing: 0.1px;
+  }
 }
 
 @mixin text-label () {
@@ -24,6 +36,11 @@
   font-size: 18px;
   line-height: 24px;
   letter-spacing: 0.5px;
+
+  @media screen and (max-width: $breakpoint-md) {
+    font-size: 16px;
+    letter-spacing: 0.44px;
+  }
 }
 
 @mixin text-subheading () {
@@ -32,6 +49,12 @@
   font-size: 18px;
   line-height: 24px;
   letter-spacing: 0.5px;
+
+  @media screen and (max-width: $breakpoint-md) {
+    font-size: 16px;
+    line-height: 22px;
+    letter-spacing: 0.44px;
+  }
 }
 
 @mixin text-h2 () {
@@ -40,6 +63,12 @@
   font-size: 28px;
   line-height: 36px;
   letter-spacing: 0.25px;
+
+  @media screen and (max-width: $breakpoint-md) {
+    font-size: 20px;
+    line-height: 28px;
+    letter-spacing: 0.18px;
+  }
 }
 
 @mixin text-h1 () {
@@ -48,6 +77,12 @@
   font-size: 36px;
   line-height: 60px;
   letter-spacing: 0.5px;
+
+  @media screen and (max-width: $breakpoint-md) {
+    font-size: 26px;
+    line-height: 34px;
+    letter-spacing: 0.36px;
+  }
 }
 
 @mixin text-xl () {
@@ -56,6 +91,12 @@
   font-size: 70px;
   line-height: 100px;
   letter-spacing: 1px;
+
+  @media screen and (max-width: $breakpoint-md) {
+    font-size: 36px;
+    line-height: 50px;
+    letter-spacing: 0.5px;
+  }
 }
 
 .text-caption {

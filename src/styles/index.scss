@@ -5,6 +5,11 @@
 body {
   @include text-body;
   overflow-x: hidden;
+  min-width: 320px;
+
+  &.no-scroll {
+    overflow-y: hidden;
+  }
 }
 
 a {
