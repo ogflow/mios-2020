@@ -8,32 +8,32 @@
   .content {
     z-index: 5;
     position: relative;
-    padding: 140px 100px 0 100px;
+    padding-top: 140px;
 
     @media screen and (max-width: $breakpoint-xl) {
-      padding: 125px 40px 0 40px;
+      padding-top: 125px;
     }
 
     @media screen and (max-width: $breakpoint-md) {
-      padding: 85px 20px 0 20px;
+      padding-top: 85px;
     }
 
     section {
       max-width: 1400px;
       width: 100%;
       margin: 0 auto;
-      padding-bottom: 400px;
+      padding: 0 100px 400px 100px;
 
       @media screen and (max-width: $breakpoint-xl) {
-        padding-bottom: 240px;
+        padding: 0 40px 240px 40px;
       }
 
       @media screen and (max-width: $breakpoint-md) {
-        padding-bottom: 160px;
+        padding: 0 20px 160px 20px;
       }
 
       @media screen and (max-width: $breakpoint-sm) {
-        padding-bottom: 110px;
+        padding: 0 20px 110px 20px;
       }
   
       &.company-slogan {
@@ -51,6 +51,10 @@
       }
 
       &.services {
+        overflow: hidden;
+        padding-left: 0;
+        padding-right: 0;
+
         .text-h1 {
           text-align: center;
         }
@@ -109,6 +113,18 @@
         @media screen and (max-width: $breakpoint-sm) {
           .button {
             margin-top: 110px;
+          }
+
+          .services-list {
+            li {
+              &:not(.is-centered):nth-child(odd) {
+                transform: translateX(-150vw) skewX(50deg) scale3d(2, 1.5, 2);
+              }
+  
+              &:not(.is-centered):nth-child(even) {
+                transform: translateX(150vw) skewX(-50deg) scale3d(2, 1.5, 2);
+              }
+            }
           }
         }
       }
