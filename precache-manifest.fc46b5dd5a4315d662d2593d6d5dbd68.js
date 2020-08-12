@@ -1,6 +1,6 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "b6ce24d00fcb3abc65ea6357bbe56afb",
+    "revision": "ee6a9deb57ba4a65e743d6e5b9e5f0fd",
     "url": "/mios-2020/index.html"
   },
   {
@@ -8,8 +8,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/mios-2020/static/css/2.71eaf00e.chunk.css"
   },
   {
-    "revision": "6f1105d47463d2e25b21",
-    "url": "/mios-2020/static/css/main.6dea33db.chunk.css"
+    "revision": "5663142e57079fe609e8",
+    "url": "/mios-2020/static/css/main.f181378e.chunk.css"
   },
   {
     "revision": "acb3ae2bc6532bc869e6",
@@ -20,7 +20,7 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/mios-2020/static/js/2.8f6556c3.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "6f1105d47463d2e25b21",
+    "revision": "5663142e57079fe609e8",
     "url": "/mios-2020/static/js/main.598849a3.chunk.js"
   },
   {
