@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.css": "/mios-2020/static/css/main.f181378e.chunk.css",
+    "main.css": "/mios-2020/static/css/main.618a730f.chunk.css",
     "main.js": "/mios-2020/static/js/main.598849a3.chunk.js",
     "main.js.map": "/mios-2020/static/js/main.598849a3.chunk.js.map",
     "runtime-main.js": "/mios-2020/static/js/runtime-main.b39a4d71.js",
@@ -9,10 +9,10 @@
     "static/js/2.8f6556c3.chunk.js": "/mios-2020/static/js/2.8f6556c3.chunk.js",
     "static/js/2.8f6556c3.chunk.js.map": "/mios-2020/static/js/2.8f6556c3.chunk.js.map",
     "index.html": "/mios-2020/index.html",
-    "precache-manifest.fc46b5dd5a4315d662d2593d6d5dbd68.js": "/mios-2020/precache-manifest.fc46b5dd5a4315d662d2593d6d5dbd68.js",
+    "precache-manifest.d1b408ac7c4904e1181052aa37e0000d.js": "/mios-2020/precache-manifest.d1b408ac7c4904e1181052aa37e0000d.js",
     "service-worker.js": "/mios-2020/service-worker.js",
     "static/css/2.71eaf00e.chunk.css.map": "/mios-2020/static/css/2.71eaf00e.chunk.css.map",
-    "static/css/main.f181378e.chunk.css.map": "/mios-2020/static/css/main.f181378e.chunk.css.map",
+    "static/css/main.618a730f.chunk.css.map": "/mios-2020/static/css/main.618a730f.chunk.css.map",
     "static/js/2.8f6556c3.chunk.js.LICENSE.txt": "/mios-2020/static/js/2.8f6556c3.chunk.js.LICENSE.txt",
     "static/media/arrow_down.14dd06bc.svg": "/mios-2020/static/media/arrow_down.14dd06bc.svg",
     "static/media/arrow_dropdown.1a6ab370.svg": "/mios-2020/static/media/arrow_dropdown.1a6ab370.svg",
@@ -26,7 +26,7 @@
     "static/js/runtime-main.b39a4d71.js",
     "static/css/2.71eaf00e.chunk.css",
     "static/js/2.8f6556c3.chunk.js",
-    "static/css/main.f181378e.chunk.css",
+    "static/css/main.618a730f.chunk.css",
     "static/js/main.598849a3.chunk.js"
   ]
 }
